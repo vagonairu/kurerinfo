@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Переход к регистрации курьера — KURERINFO</title>
+    <meta name="description" content="Безопасный переход со справочного сайта KURERINFO к анкете регистрации курьера.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta http-equiv="refresh" content="6;url={{ .Site.Params.referral_url }}">
+    <style>
+      :root{color-scheme:light;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--ink:#10211d;--forest:#163f35;--lime:#d8ff5f;--cream:#fbfaf5;--muted:#687871}*{box-sizing:border-box}body{min-height:100svh;margin:0;display:grid;place-items:center;padding:24px;background:var(--forest);color:white}main{width:min(100%,620px);padding:clamp(32px,7vw,64px);border-radius:30px;background:var(--cream);color:var(--ink);box-shadow:0 28px 90px rgba(3,20,16,.32)}.brand{display:flex;align-items:center;gap:10px;margin-bottom:54px;font-weight:950;letter-spacing:-.04em}.mark{display:grid;width:42px;height:42px;place-items:center;border-radius:12px 12px 12px 3px;background:var(--lime);color:var(--forest);font-weight:950}.brand b{color:var(--forest)}.eyebrow{margin:0 0 14px;color:var(--forest);font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:clamp(2.4rem,8vw,4.8rem);letter-spacing:-.065em;line-height:.96}p{margin:22px 0 0;color:var(--muted);line-height:1.6}.progress{height:6px;margin:38px 0 24px;overflow:hidden;border-radius:99px;background:#e7e8e0}.progress span{display:block;width:0;height:100%;background:var(--lime);animation:load 1.8s linear forwards}@keyframes load{to{width:100%}}a{display:flex;min-height:58px;align-items:center;justify-content:space-between;padding:0 24px;border-radius:999px;background:var(--forest);color:white;font-weight:850;text-decoration:none}small{display:block;margin-top:16px;color:var(--muted);font-size:.72rem}@media(prefers-reduced-motion:reduce){.progress span{animation:none;width:100%}}
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand"><span class="mark">K</span><b>KURERINFO</b></div>
+      <p class="eyebrow">Следующий шаг</p>
+      <h1>Открываем анкету регистрации</h1>
+      <p>Вы переходите с независимого справочного сайта на внешнюю страницу. Проверьте город, формат, требования и условия перед отправкой анкеты.</p>
+      <div class="progress" aria-hidden="true"><span></span></div>
+      <a href="{{ .Site.Params.referral_url }}" rel="nofollow sponsored" data-manual-redirect>Продолжить сейчас <span>→</span></a>
+      <small>Автоматический переход займёт пару секунд. Короткая ссылка: clck.ru/3WpciR</small>
+    </main>
+    <script>
+      (function () {
+        var target = {{ .Site.Params.referral_url | jsonify | safeJS }};
+        var timeout = Number({{ .Site.Params.redirect_timeout_ms }}) || 1800;
+        var redirected = false;
+        var go = function () {
+          if (redirected) return;
+          redirected = true;
+          window.location.replace(target);
+        };
+        document.querySelector("[data-manual-redirect]").addEventListener("click", function () { redirected = true; });
+        window.setTimeout(go, timeout);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+default:
+  month_factor: 4.4
+  rates:
+    walking: 380
+    bike: 470
+    car: 520

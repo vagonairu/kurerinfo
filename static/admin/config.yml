@@ -1,0 +1,211 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: allxx/KURERINFO
+  branch: main
+
+locale: ru
+media_folder: static/media
+public_folder: /media
+
+collections:
+  - name: "landing"
+    label: "Посадочные страницы"
+    files:
+      - name: "home"
+        label: "Главная страница"
+        file: "content/_index.md"
+        format: "frontmatter"
+        fields:
+          - { label: "SEO title", name: "title", widget: "string" }
+          - { label: "SEO description", name: "description", widget: "string" }
+          - { label: "H1", name: "h1", widget: "string" }
+          - { label: "Бейдж Hero", name: "hero_badge", widget: "string", required: false }
+          - { label: "Подзаголовок Hero", name: "hero_subtitle", widget: "text" }
+          - { label: "Картинка Hero", name: "hero_image", widget: "image" }
+          - { label: "Alt картинки Hero", name: "hero_image_alt", widget: "string", required: false }
+          - { label: "Бейджи Hero", name: "hero_badges", widget: "list", required: false }
+          - { label: "Текст CTA", name: "cta_text", widget: "string", default: "Стать курьером" }
+          - { label: "CTA URL", name: "cta_url", widget: "string", required: false, hint: "Если пусто, используется промежуточная страница из hugo.toml" }
+          - { label: "URL webhook n8n", name: "chat_webhook_url", widget: "string", required: false }
+          - { label: "Микротекст под CTA", name: "hero_microtext", widget: "string", required: false }
+          - label: "Кому подойдет"
+            name: "audience"
+            widget: "list"
+            fields:
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Текст", name: "text", widget: "string" }
+          - label: "Преимущества"
+            name: "benefits"
+            widget: "list"
+            fields:
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Текст", name: "text", widget: "string" }
+          - label: "Как начать"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Текст", name: "text", widget: "string" }
+          - label: "Форматы доставки"
+            name: "formats"
+            widget: "list"
+            fields:
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Текст", name: "text", widget: "string" }
+          - { label: "Города", name: "cities", widget: "list" }
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Вопрос", name: "question", widget: "string" }
+              - { label: "Ответ", name: "answer", widget: "text" }
+
+  - name: "landing_pages"
+    label: "Новые посадочные"
+    label_singular: "Посадочная"
+    folder: "content/landing"
+    create: true
+    identifier_field: "slug"
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "{{url}}"
+    fields:
+      - { label: "SEO title", name: "title", widget: "string" }
+      - {
+          label: "Адрес страницы ЧПУ",
+          name: "slug",
+          widget: "string",
+          required: true,
+          pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Используйте только маленькие латинские буквы, цифры и дефисы"],
+        }
+      - {
+          label: "URL страницы",
+          name: "url",
+          widget: "string",
+          required: true,
+          hint: "Например: /podrabotka_kurerom.html. Для рекламных страниц можно использовать URL с .html.",
+          pattern: ["^/[a-z0-9_/-]+(?:\\.html|/)$", "URL должен начинаться с / и заканчиваться на .html или /"],
+        }
+      - {
+          label: "Аудитория",
+          name: "audience_key",
+          widget: "select",
+          required: true,
+          options:
+            [
+              { label: "Подработка", value: "podrabotka" },
+              { label: "Без опыта", value: "bez_opyta" },
+              { label: "Ежедневная оплата", value: "ezhednevnaya_oplata" },
+              { label: "На велосипеде", value: "na_velosipede" },
+              { label: "Свободный график", value: "svobodniy_grafik" },
+              { label: "На авто", value: "na_avto" },
+              { label: "Пеший", value: "peshiy" },
+              { label: "Выходные", value: "vyhodnye" },
+              { label: "Студентам", value: "studentam" },
+            ],
+        }
+      - { label: "SEO description", name: "description", widget: "string" }
+      - { label: "H1", name: "h1", widget: "string" }
+      - { label: "Бейдж Hero", name: "hero_badge", widget: "string", required: false }
+      - { label: "Подзаголовок Hero", name: "hero_subtitle", widget: "text" }
+      - { label: "Картинка Hero", name: "hero_image", widget: "image" }
+      - { label: "Alt картинки Hero", name: "hero_image_alt", widget: "string", required: false }
+      - { label: "Бейджи Hero", name: "hero_badges", widget: "list", required: false }
+      - { label: "Текст CTA", name: "cta_text", widget: "string", default: "Стать курьером" }
+      - { label: "CTA URL", name: "cta_url", widget: "string", required: false, hint: "Если пусто, используется промежуточная страница из hugo.toml" }
+      - { label: "URL webhook n8n", name: "chat_webhook_url", widget: "string", required: false }
+      - { label: "Микротекст под CTA", name: "hero_microtext", widget: "string", required: false }
+      - label: "Кому подойдет"
+        name: "audience"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Текст", name: "text", widget: "string" }
+      - label: "Преимущества"
+        name: "benefits"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Текст", name: "text", widget: "string" }
+      - label: "Как начать"
+        name: "steps"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Текст", name: "text", widget: "string" }
+      - label: "Форматы доставки"
+        name: "formats"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Текст", name: "text", widget: "string" }
+      - { label: "Города", name: "cities", widget: "list", required: false }
+      - label: "FAQ"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Вопрос", name: "question", widget: "string" }
+          - { label: "Ответ", name: "answer", widget: "text" }
+
+  - name: "posts"
+    label: "WIKI / статьи"
+    label_singular: "Статья"
+    folder: "content/wiki"
+    create: true
+    identifier_field: "slug"
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "wiki/{{slug}}/"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - {
+          label: "Адрес страницы ЧПУ",
+          name: "slug",
+          widget: "string",
+          required: true,
+          hint: "Например: rabota-kurierom-v-moskve. Только латиница, цифры и дефисы. Можно менять у опубликованных статей.",
+          pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Используйте только маленькие латинские буквы, цифры и дефисы"],
+        }
+      - {
+          label: "Дескрипшен (description)",
+          name: "description",
+          widget: "string",
+          required: true,
+          hint: "Короткое описание статьи для meta description, карточек блога и сниппета в поиске. Оптимально 120-170 символов.",
+        }
+      - {
+          label: "Изображение",
+          name: "image",
+          widget: "image",
+          default: "/media/kurer.jpg",
+          required: false,
+        }
+      - { label: "Категория", name: "category", widget: "string", default: "работа курьером", required: false }
+      - { label: "Метки", name: "tags", widget: "list", required: false }
+      - {
+          label: "Дата",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DDTHH:mm:ss+03:00",
+          picker_utc: false,
+        }
+      - {
+          label: "Дата обновления для sitemap",
+          name: "lastmod",
+          widget: "datetime",
+          format: "YYYY-MM-DDTHH:mm:ss+03:00",
+          picker_utc: false,
+          required: false,
+          hint: "Можно оставить пустым: на GitHub Pages Hugo возьмет дату последнего коммита файла. Заполните вручную, если нужно задать точную дату обновления.",
+        }
+      - { label: "Черновик", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "Ключевые слова", name: "keywords", widget: "list", required: false }
+      - { label: "Текст статьи", name: "body", widget: "markdown" }

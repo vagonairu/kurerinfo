@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" role="img" aria-label="KURERINFO">
+  <rect width="128" height="128" rx="32" fill="#d8ff58"/>
+  <path d="M36 29h20v26l24-26h24L76 59l30 39H80L56 66v32H36z" fill="#123c32"/>
+  <text x="158" y="84" fill="#123c32" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-3">KURER</text>
+  <text x="354" y="84" fill="#6a8f18" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-3">INFO</text>
+</svg>

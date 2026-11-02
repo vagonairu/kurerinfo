@@ -1,0 +1,43 @@
+{{ define "main" }}
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="eyebrow eyebrow-light">База знаний</p>
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Description | default "Практические инструкции о доходе, регистрации, форматах доставки, документах, технике и первом рабочем дне." }}</p>
+    </div>
+  </section>
+
+  <section class="section shell">
+    {{ with .Content }}<div class="article-body simple-page-content">{{ . }}</div>{{ end }}
+    <div class="wiki-toolbar">
+      <p>{{ len .Pages }} материалов · обновляем по мере изменения условий</p>
+      <a class="button button-small button-accent" href="{{ .Site.Params.registration_redirect_url }}" data-cta="wiki_top" data-registration-cta>Стать курьером</a>
+    </div>
+    {{ $paginator := .Paginate (.Pages.ByLastmod.Reverse) 18 }}
+    <div class="post-grid">
+      {{ range $paginator.Pages }}
+        {{ $image := .Params.image | default "/media/template-og.jpg" }}
+        <a class="post-card" href="{{ .RelPermalink }}">
+          <img class="post-card-image" src="{{ $image | relURL }}" alt="{{ .Title }}" title="{{ .Title }}" width="640" height="360" loading="lazy" decoding="async">
+          <div class="post-card-content">
+            <span class="post-card-meta">{{ .ReadingTime }} мин · обновлено {{ .Lastmod.Format "02.01.2006" }}</span>
+            <h2>{{ .Title }}</h2>
+            <p>{{ .Description }}</p>
+            <b>Читать →</b>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+    {{ if gt $paginator.TotalPages 1 }}
+      <nav class="pagination" aria-label="Навигация по страницам WIKI">
+        {{ with $paginator.Prev }}<a class="pagination-link" href="{{ .URL }}">Назад</a>{{ else }}<span class="pagination-link pagination-disabled">Назад</span>{{ end }}
+        <div class="pagination-pages">
+          {{ range $paginator.Pagers }}
+            {{ if eq . $paginator }}<span class="pagination-page pagination-current" aria-current="page">{{ .PageNumber }}</span>{{ else }}<a class="pagination-page" href="{{ .URL }}">{{ .PageNumber }}</a>{{ end }}
+          {{ end }}
+        </div>
+        {{ with $paginator.Next }}<a class="pagination-link" href="{{ .URL }}">Вперёд</a>{{ else }}<span class="pagination-link pagination-disabled">Вперёд</span>{{ end }}
+      </nav>
+    {{ end }}
+  </section>
+{{ end }}

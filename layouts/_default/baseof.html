@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale | default "ru-RU" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ $pageTitle := .Params.seo_title | default .Title }}
+    {{ $description := .Description | default .Site.Params.description }}
+    {{ $image := .Params.image | default .Params.hero_image | default .Site.Params.og_image }}
+    <title>{{ if .IsHome }}{{ $pageTitle }}{{ else }}{{ $pageTitle }} — {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ $description }}">
+    {{ with .Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:title" content="{{ $pageTitle }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ $image | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#163f35">
+    <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+    {{ if .IsHome }}
+      <link rel="preload" as="image" href="{{ "/media/template-hero.jpg" | relURL }}" fetchpriority="high">
+    {{ end }}
+    {{ with resources.Get "css/main.css" }}
+      {{ $css := . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+    {{ end }}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "{{ .Site.BaseURL }}#website",
+            "url": "{{ .Site.BaseURL }}",
+            "name": "{{ .Site.Title }}",
+            "description": {{ .Site.Params.description | jsonify | safeJS }},
+            "inLanguage": "ru-RU"
+          },
+          {
+            "@type": "Organization",
+            "@id": "{{ .Site.BaseURL }}#publisher",
+            "url": "{{ .Site.BaseURL }}",
+            "name": "{{ .Site.Title }}",
+            "description": {{ .Site.Params.description | jsonify | safeJS }},
+            "logo": "{{ "logo.svg" | absURL }}"
+          }
+        ]
+      }
+    </script>
+    {{ if and .IsPage (eq .Section "wiki") }}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": {{ .Title | jsonify | safeJS }},
+          "description": {{ $description | jsonify | safeJS }},
+          "image": "{{ $image | absURL }}",
+          "datePublished": "{{ .Date.Format "2006-01-02" }}",
+          "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+          "wordCount": {{ .WordCount }},
+          "inLanguage": "ru-RU",
+          "mainEntityOfPage": "{{ .Permalink }}",
+          "author": {"@id": "{{ .Site.BaseURL }}#publisher"},
+          "publisher": {"@id": "{{ .Site.BaseURL }}#publisher"}
+        }
+      </script>
+    {{ end }}
+    {{ with .Params.faq }}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {{- range $index, $item := . -}}
+              {{- if $index }},{{ end -}}
+              {"@type":"Question","name":{{ $item.question | jsonify | safeJS }},"acceptedAnswer":{"@type":"Answer","text":{{ $item.answer | jsonify | safeJS }}}}
+            {{- end -}}
+          ]
+        }
+      </script>
+    {{ end }}
+  </head>
+  <body data-metrika-id="{{ .Site.Params.yandex_metrika_id }}" data-registration-click-goal="{{ .Site.Params.registration_click_goal }}">
+    <a class="skip-link" href="#content">К содержанию</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="{{ "/" | relURL }}" aria-label="KURERINFO — главная">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>KURER<span>INFO</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+      </nav>
+      <a class="button button-small button-accent header-cta" href="{{ .Site.Params.registration_redirect_url }}" data-cta="header" data-registration-cta>Стать курьером</a>
+    </header>
+
+    <main id="content">{{ block "main" . }}{{ end }}</main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="{{ "/" | relURL }}"><span class="brand-mark" aria-hidden="true">K</span><span>KURER<span>INFO</span></span></a>
+        <p>Спокойно разобраться в работе курьером и принять решение без рекламного шума.</p>
+      </div>
+      <div class="footer-column">
+        <strong>Разделы</strong>
+        <a href="{{ "/#calculator" | relURL }}">Калькулятор</a>
+        <a href="{{ "/#formats" | relURL }}">Форматы</a>
+        <a href="{{ "/wiki/" | relURL }}">WIKI</a>
+      </div>
+      <div class="footer-column">
+        <strong>Начать</strong>
+        <a href="{{ .Site.Params.registration_redirect_url }}" rel="nofollow sponsored" data-cta="footer" data-registration-cta>Регистрация курьера</a>
+        <a href="{{ "/wiki/registraciya/" | relURL }}">Инструкция</a>
+        <a href="{{ "/index.xml" | relURL }}">RSS</a>
+      </div>
+      <div class="footer-legal">
+        <p>KURERINFO — независимый информационный партнёрский ресурс, не работодатель и не официальный сайт сервиса. Условия проверяйте на странице регистрации.</p>
+        <p>© {{ now.Year }} KURERINFO</p>
+      </div>
+    </footer>
+
+    {{ if ne .Type "redirect" }}
+      <a class="mobile-cta" href="{{ .Site.Params.registration_redirect_url }}" data-cta="mobile_sticky" data-registration-cta>Стать курьером <span>→</span></a>
+    {{ end }}
+    {{ with resources.Get "js/main.js" }}
+      {{ $js := . | minify | fingerprint }}
+      <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+    {{ end }}
+  </body>
+</html>

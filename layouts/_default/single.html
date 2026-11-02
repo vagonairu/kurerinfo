@@ -1,0 +1,31 @@
+{{ define "main" }}
+  {{ $image := .Params.image | default "/media/template-og.jpg" }}
+  <article class="article">
+    <a class="article-back" href="{{ if eq .Section "wiki" }}{{ "/wiki/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}">← {{ if eq .Section "wiki" }}Все материалы{{ else }}На главную{{ end }}</a>
+    <header class="article-header">
+      <p class="article-meta">KURERINFO WIKI · {{ .ReadingTime }} мин · обновлено <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "02.01.2006" }}</time></p>
+      <h1>{{ .Title }}</h1>
+      <p class="article-deck">{{ .Description }}</p>
+    </header>
+    <img class="article-cover" src="{{ $image | relURL }}" alt="{{ .Title }}" title="{{ .Title }}" width="1120" height="595" loading="eager" fetchpriority="high" decoding="async">
+
+    <div class="article-layout">
+      {{ if gt .WordCount 700 }}
+        <aside class="article-toc">
+          <strong>В этой статье</strong>
+          {{ .TableOfContents }}
+        </aside>
+      {{ else }}<div></div>{{ end }}
+      <div>
+        <div class="article-body">{{ .Content }}</div>
+        {{ with .Params.faq }}
+          <section class="article-body article-faq" aria-label="Вопросы и ответы">
+            <h2>Вопросы и ответы</h2>
+            {{ range . }}<h3>{{ .question }}</h3><p>{{ .answer }}</p>{{ end }}
+          </section>
+        {{ end }}
+        {{ partial "article-registration-cta.html" . }}
+      </div>
+    </div>
+  </article>
+{{ end }}

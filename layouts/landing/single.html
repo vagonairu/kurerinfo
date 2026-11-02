@@ -1,0 +1,51 @@
+{{ define "main" }}
+  {{ $audienceKey := .Params.audience_key | default "" }}
+  {{ $config := index hugo.Data.audiences $audienceKey | default dict }}
+  {{ $heroImage := .Params.hero_image | default $config.hero_image | default "/media/template-og.jpg" }}
+  {{ $benefits := .Params.benefits | default $config.benefits }}
+  {{ $steps := .Params.steps | default $config.steps | default hugo.Data.landing_defaults.steps }}
+  {{ $faq := .Params.faq | default $config.faq }}
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="eyebrow eyebrow-light">{{ .Params.hero_badge | default "Работа курьером" }}</p>
+      <h1>{{ .Params.h1 | default .Title }}</h1>
+      <p>{{ .Params.hero_subtitle | default .Description }}</p>
+      <div class="hero-actions">
+        <a class="button button-accent button-large" href="{{ .Site.Params.registration_redirect_url }}" data-cta="landing_hero" data-registration-cta>Стать курьером <span>→</span></a>
+        <a class="button button-ghost-light button-large" href="{{ "/#calculator" | relURL }}">Рассчитать доход</a>
+      </div>
+    </div>
+  </section>
+  <article class="article">
+    <img class="article-cover" src="{{ $heroImage | relURL }}" alt="{{ .Params.hero_image_alt | default .Title }}" title="{{ .Title }}" width="1120" height="595" loading="eager" fetchpriority="high">
+    <div class="article-layout">
+      <aside class="article-toc"><strong>Навигация</strong><nav><ul><li><a href="#details">Что важно знать</a></li><li><a href="#steps">Как начать</a></li>{{ if $faq }}<li><a href="#faq">Вопросы</a></li>{{ end }}</ul></nav></aside>
+      <div>
+        <div class="article-body" id="details">{{ .Content }}</div>
+        {{ partial "article-registration-cta.html" . }}
+      </div>
+    </div>
+  </article>
+  {{ with $benefits }}
+    <section class="section shell">
+      <div class="section-intro"><p class="eyebrow">Что учесть</p><h2>Сценарий под ваш формат</h2></div>
+      <ol class="steps-grid">
+        {{ range first 3 . }}<li><span>✓</span><h3>{{ .title }}</h3><p>{{ .text }}</p></li>{{ end }}
+      </ol>
+    </section>
+  {{ end }}
+  {{ with $steps }}
+    <section class="section shell" id="steps">
+      <div class="section-intro"><p class="eyebrow">Порядок действий</p><h2>Начните без лишней спешки</h2></div>
+      <ol class="steps-grid">
+        {{ range $index, $item := first 3 . }}<li><span>{{ printf "%02d" (add $index 1) }}</span><h3>{{ $item.title }}</h3><p>{{ $item.text }}</p></li>{{ end }}
+      </ol>
+    </section>
+  {{ end }}
+  {{ with $faq }}
+    <section class="section shell faq-section" id="faq">
+      <div class="section-intro"><p class="eyebrow">Вопросы</p><h2>Коротко о главном</h2></div>
+      <div class="faq-list">{{ range . }}<details><summary>{{ .question }}<span>+</span></summary><p>{{ .answer }}</p></details>{{ end }}</div>
+    </section>
+  {{ end }}
+{{ end }}

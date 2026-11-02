@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+{{- $base := urls.Parse .Site.BaseURL }}
+Host: {{ $base.Host }}
+Sitemap: {{ "sitemap.xml" | absURL }}

@@ -1,0 +1,13 @@
+.DS_Store
+.hugo_build.lock
+resources/_gen/
+public/
+пример/
+Анализ*.md
+шаблон.md
+keywords.md
+словаюmd.md
+clck.png
+static/logo.png
+static/favicon.ico
+static/media/kurergo_top.webp

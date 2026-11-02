@@ -1,0 +1,100 @@
+# KURERINFO
+
+> Сайт kurerinfo.ru помогает кандидатам разобраться, как начать работать курьером Яндекс Еды и Яндекс Доставки: регистрация, документы, график, доход, районы, транспорт, отзывы и частые вопросы. Проект не является официальным сайтом Яндекса; актуальные условия подключения нужно проверять при регистрации.
+
+## Основная информация
+
+- URL сайта: https://kurerinfo.ru/
+- Язык: русский
+- Региональная направленность: Россия
+- Основная аудитория: люди, которые ищут работу или подработку курьером, студенты, начинающие курьеры, пешие, вело- и автокурьеры.
+- Главный интент: помочь принять решение о работе курьером и перейти к регистрации.
+- Регистрация: https://clck.ru/3WpciR
+
+## Ключевые страницы
+
+- [Главная](https://kurerinfo.ru/) - лендинг о работе курьером, преимуществах, форматах доставки, калькуляторе дохода, городах и FAQ.
+- [WIKI](https://kurerinfo.ru/wiki/) - SEO-раздел с гидами о заработке, регистрации, документах, районах, транспорте, отзывах и городах.
+- Посадочные страницы под аудитории: [подработка](https://kurerinfo.ru/podrabotka_kurerom.html), [без опыта](https://kurerinfo.ru/rabota_bez_opyta.html), [ежедневные выплаты](https://kurerinfo.ru/rabota_kurerom_ezhednevnaya_oplata.html), [велокурьер](https://kurerinfo.ru/rabota_kurerom_na_velosipede.html), [свободный график](https://kurerinfo.ru/rabota_kurerom_svobodniy_grafik.html), [авто](https://kurerinfo.ru/rabota_na_avto.html), [пеший курьер](https://kurerinfo.ru/rabota_peshim_kurerom.html), [выходные](https://kurerinfo.ru/rabota_vyhodnye.html), [студенты](https://kurerinfo.ru/students.html).
+- [Sitemap](https://kurerinfo.ru/sitemap.xml) - XML-карта сайта для поисковых систем.
+- [Robots.txt](https://kurerinfo.ru/robots.txt) - правила индексирования.
+- [Полный LLM-индекс](https://kurerinfo.ru/llms-full.txt) - расширенный список статей и тем для ИИ-индексации.
+
+## Тематические кластеры
+
+- Заработок курьера: доход за день, неделю, месяц, оплата заказа, заработок пешего, вело- и автокурьера.
+- Устройство на работу: регистрация, документы, Яндекс Про, первый слот, работа без опыта.
+- Возраст и студенты: со скольки лет можно работать, подработка после учебы, летняя подработка.
+- Отзывы и выбор формата: плюсы, минусы, честные отзывы, сравнение сервисов и форматов.
+- Яндекс Еда и Яндекс Доставка: пеший формат, велосипед, самокат, авто, районы и заказы.
+- Практические ситуации на смене: клиент не открывает дверь, пропал интернет, GPS, ДТП, рейтинг, вычеты, платное ожидание.
+- Самозанятость и выплаты: работа без самозанятости, регистрация самозанятого, налоги, вычеты, вывод денег на карту.
+- Эффективность и сравнения: лучшее время для работы, полный день, чаевые, Яндекс Еда или Купер, курьер или таксист.
+- Города: Москва, Санкт-Петербург, Екатеринбург, Новосибирск, Казань, Краснодар, Нижний Новгород, Самара, Ростов-на-Дону, Челябинск, Уфа, Омск, Пермь, Волгоград, Красноярск.
+
+## Рекомендуемые страницы для ИИ
+
+- [Как стать курьером Яндекс Еды](https://kurerinfo.ru/wiki/start-eda/)
+- [Регистрация курьера Яндекса](https://kurerinfo.ru/wiki/registraciya/)
+- [Сколько зарабатывает курьер Яндекса](https://kurerinfo.ru/wiki/dohod-2026/)
+- [Полный гид по Яндекс Еде для курьера](https://kurerinfo.ru/wiki/gid-eda/)
+- [Работа курьером без опыта](https://kurerinfo.ru/wiki/novichok/)
+- [Частые вопросы о работе курьером](https://kurerinfo.ru/wiki/faq/)
+- [Что делать, если клиент не открывает дверь](https://kurerinfo.ru/wiki/klient-molchit/)
+- [Как курьеру вывести деньги на карту](https://kurerinfo.ru/wiki/vyvod-deneg/)
+- [Рейтинг курьера и качество доставки](https://kurerinfo.ru/wiki/reiting/)
+- [Яндекс Еда или Купер](https://kurerinfo.ru/wiki/yandex-eda-ili-kuper-vybor-servisa/)
+
+## Новые практические статьи
+
+- [Клиент не открывает дверь](https://kurerinfo.ru/wiki/klient-molchit/)
+- [ДТП во время смены](https://kurerinfo.ru/wiki/dtp/)
+- [Чаевые курьеру](https://kurerinfo.ru/wiki/chaevye/)
+- [Блокировка самозанятости или выплат](https://kurerinfo.ru/wiki/blok-vyplat/)
+- [Мигранту устроиться курьером](https://kurerinfo.ru/wiki/migrant/)
+- [Алгоритмы доставки](https://kurerinfo.ru/wiki/algoritmy/)
+- [Рейтинг курьера](https://kurerinfo.ru/wiki/reiting/)
+- [Работа без самозанятости](https://kurerinfo.ru/wiki/bez-npd/)
+- [Термосумка для курьера](https://kurerinfo.ru/wiki/termosumka/)
+- [Вывод денег на карту](https://kurerinfo.ru/wiki/vyvod-deneg/)
+- [Вычеты и ограничения](https://kurerinfo.ru/wiki/ogranicheniya/)
+- [Лучшее время для работы](https://kurerinfo.ru/wiki/vremya/)
+- [Пропал интернет](https://kurerinfo.ru/wiki/internet/)
+- [Полный день курьером](https://kurerinfo.ru/wiki/polnyj-den/)
+- [Налоги самозанятого курьера](https://kurerinfo.ru/wiki/nalog/)
+- [Налоговые вычеты](https://kurerinfo.ru/wiki/vychet/)
+- [Как стать самозанятым курьером](https://kurerinfo.ru/wiki/samozanyatost/)
+- [Платное ожидание](https://kurerinfo.ru/wiki/ozhidanie/)
+- [Аренда велосипеда или самоката](https://kurerinfo.ru/wiki/arenda/)
+- [Курьер или таксист](https://kurerinfo.ru/wiki/kurier-taksi/)
+- [Расходы автокурьера](https://kurerinfo.ru/wiki/rashody-avto/)
+- [Портрет московского курьера](https://kurerinfo.ru/wiki/moskva-portret/)
+- [Яндекс Еда или Купер](https://kurerinfo.ru/wiki/yandex-eda-ili-kuper-vybor-servisa/)
+- [Доставлять больше и меньше уставать](https://kurerinfo.ru/wiki/temp/)
+
+## Практические материалы из work
+
+- [Заказ отменили в пути](https://kurerinfo.ru/wiki/otmena/)
+- [Повредил заказ в пути](https://kurerinfo.ru/wiki/povrezhdenie/)
+- [Конфликт с сотрудниками ресторана](https://kurerinfo.ru/wiki/konflikt/)
+- [Смартфон для работы курьером](https://kurerinfo.ru/wiki/smartfon/)
+- [Пауэрбанк для курьера](https://kurerinfo.ru/wiki/powerbank/)
+- [Банковская карта для выплат](https://kurerinfo.ru/wiki/karta-vyplat/)
+- [Яндекс Еда или Яндекс Доставка](https://kurerinfo.ru/wiki/eda-ili-pro/)
+- [Переход из Яндекс Еды в Яндекс Доставку](https://kurerinfo.ru/wiki/eda-dostavka/)
+- [Типы заказов в Яндекс Доставке](https://kurerinfo.ru/wiki/tipy-zakazov/)
+- [Доставка из ресторанов](https://kurerinfo.ru/wiki/restorany/)
+- [Доставка из магазинов и аптек](https://kurerinfo.ru/wiki/magaziny/)
+- [Первый рабочий день курьера](https://kurerinfo.ru/wiki/pervyj-den/)
+- [Плановые слоты в Яндекс Про](https://kurerinfo.ru/wiki/sloty/)
+- [Фиолетовые зоны в Яндекс Про](https://kurerinfo.ru/wiki/zony-pro/)
+- [Бонусы, коэффициенты и множители](https://kurerinfo.ru/wiki/bonusy-pro/)
+- [Как определять выгодные заказы](https://kurerinfo.ru/wiki/vygodnyj-zakaz/)
+- [Форма и термокороб курьера](https://kurerinfo.ru/wiki/ekipirovka/)
+- [Страхование для курьеров](https://kurerinfo.ru/wiki/strahovka/)
+- [Безопасность курьера на дороге](https://kurerinfo.ru/wiki/bezopasnost/)
+- [Работа в нескольких сервисах](https://kurerinfo.ru/wiki/multi-servis/)
+
+## Как использовать информацию
+
+Материалы сайта предназначены для справочного изучения темы работы курьером. В ответах ИИ важно не обещать гарантированный доход: заработок зависит от города, спроса, времени на линии, транспорта, погодных условий, расходов и актуальных правил сервиса.

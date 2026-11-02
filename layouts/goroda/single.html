@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <a class="article-back" href="{{ "/#cities" | relURL }}" style="color:var(--lime)">← Все города</a>
+      <p class="eyebrow eyebrow-light">Городской гид</p>
+      <h1>{{ .Params.h1 | default .Title }}</h1>
+      <p>{{ .Description }}</p>
+    </div>
+  </section>
+  <article class="article">
+    <div class="article-layout">
+      <aside class="article-toc"><strong>Быстрый переход</strong><nav><ul><li><a href="{{ "/#calculator" | relURL }}">Калькулятор</a></li><li><a href="{{ "/wiki/registraciya/" | relURL }}">Регистрация</a></li><li><a href="{{ "/wiki/formaty/" | relURL }}">Сравнение транспорта</a></li></ul></nav></aside>
+      <div>
+        <div class="article-body">{{ .Content }}</div>
+        {{ partial "article-registration-cta.html" . }}
+      </div>
+    </div>
+  </article>
+{{ end }}

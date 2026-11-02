@@ -1,0 +1,67 @@
+baseURL = "https://kurerinfo.ru/"
+locale = "ru-RU"
+title = "KURERINFO"
+defaultContentLanguage = "ru"
+enableRobotsTXT = true
+enableGitInfo = false
+summaryLength = 30
+capitalizeListTitles = false
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 18
+
+[permalinks]
+  landing = "/:slug/"
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", ":git", "date", "publishDate"]
+  publishDate = ["publishDate", "date"]
+  expiryDate = ["expiryDate"]
+
+[params]
+  description = "KURERINFO — работа и подработка курьером: понятный расчёт дохода, сравнение пешего, вело- и автоформата, инструкции для старта и регистрация онлайн."
+  registration_redirect_url = "/go/yandex-courier/"
+  referral_url = "https://clck.ru/3WpciR"
+  registration_click_goal = "registration_cta_click"
+  registration_goal = "outbound_courier_registration"
+  redirect_timeout_ms = 1800
+  yandex_metrika_id = 0
+  city = "Россия"
+  og_image = "/media/template-og.jpg"
+
+[menu]
+  [[menu.main]]
+    name = "Калькулятор"
+    url = "/#calculator"
+    weight = 10
+  [[menu.main]]
+    name = "Форматы"
+    url = "/#formats"
+    weight = 20
+  [[menu.main]]
+    name = "Города"
+    url = "/#cities"
+    weight = 30
+  [[menu.main]]
+    name = "WIKI"
+    url = "/wiki/"
+    weight = 40
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[services]
+  [services.rss]
+    limit = -1
