@@ -11,9 +11,10 @@ checked = 0
 
 html_files.each do |html|
   source = html.read
+  markup = source.gsub(/<script\b[^>]*>.*?<\/script>/im, "<script></script>")
   relative = html.relative_path_from(root).to_s
 
-  source.scan(/(?:href|src)\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>]+))/i).each do |matches|
+  markup.scan(/(?:href|src)\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>]+))/i).each do |matches|
     raw = matches.compact.first
     next if raw.empty? || raw.start_with?("#", "//")
     next if raw.match?(/\A(?:https?:|mailto:|tel:|data:|javascript:)/i)
@@ -47,8 +48,8 @@ html_files.each do |html|
   seo_issues << [relative, "нет CTA на промежуточную страницу"] unless source.include?("/go/yandex-courier/")
   seo_issues << [relative, "короткая ссылка встречается вне промежуточной страницы"] if source.include?("clck.ru/3WpciR")
 
-  source.scan(/<img\b[^>]*>/i).each do |image|
-    seo_issues << [relative, "у изображения нет alt"] unless image.match?(/\balt=/i)
+  markup.scan(/<img\b[^>]*>/i).each do |image|
+    seo_issues << [relative, "у изображения нет alt"] unless image.match?(/\balt(?:\s|=|>)/i)
   end
 end
 

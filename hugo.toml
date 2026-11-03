@@ -27,7 +27,7 @@ disableKinds = ["taxonomy", "term"]
   registration_click_goal = "registration_cta_click"
   registration_goal = "outbound_courier_registration"
   redirect_timeout_ms = 1800
-  yandex_metrika_id = 0
+  yandex_metrika_id = 114040540
   city = "Россия"
   og_image = "/media/template-og.jpg"
 

@@ -85,6 +85,7 @@
     {{ end }}
   </head>
   <body data-metrika-id="{{ .Site.Params.yandex_metrika_id }}" data-registration-click-goal="{{ .Site.Params.registration_click_goal }}">
+    {{ partial "yandex-metrika.html" . }}
     <a class="skip-link" href="#content">К содержанию</a>
     <header class="site-header" data-header>
       <a class="brand" href="{{ "/" | relURL }}" aria-label="KURERINFO — главная">
