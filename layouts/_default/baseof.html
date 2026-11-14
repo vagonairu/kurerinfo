@@ -20,7 +20,11 @@
     <meta property="og:image" content="{{ $image | absURL }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#163f35">
-    <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+    <link rel="icon" href="{{ "favicon.svg?v=20261114" | relURL }}" type="image/svg+xml">
+    <link rel="icon" href="{{ "favicon-32x32.png?v=20261114" | relURL }}" type="image/png" sizes="32x32">
+    <link rel="icon" href="{{ "favicon-16x16.png?v=20261114" | relURL }}" type="image/png" sizes="16x16">
+    <link rel="shortcut icon" href="{{ "favicon.ico?v=20261114" | relURL }}">
+    <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png?v=20261114" | relURL }}" sizes="180x180">
     {{ if .IsHome }}
       <link rel="preload" as="image" href="{{ "/media/template-hero.jpg" | relURL }}" fetchpriority="high">
     {{ end }}
